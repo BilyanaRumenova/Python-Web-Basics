@@ -1,0 +1,3 @@
+recipes_app/venv
+recipes_app/db.sqlite3
+recipes_app/.idea
