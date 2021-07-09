@@ -1,0 +1,17 @@
+.list {
+    list-style-type: none;
+}
+
+.list > * {
+    padding: 0;
+    margin: 5px 0 0;
+    color: purple;
+}
+
+.list img {
+    height: 90px;
+}
+
+img {
+    max-width: 100%;
+}
