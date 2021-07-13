@@ -30,7 +30,10 @@ class Pet(models.Model):
     # age = models.IntegerField(validators= [is_positive()],null=False, blank=False)
 
     description = models.TextField()
-    image_url = models.URLField()
+    image = models.ImageField(
+        upload_to='pets',
+    )
+    # image_url = models.URLField()
 
 
 class Like(models.Model):
