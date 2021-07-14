@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
 
 
 def groups_allowed(groups=[]):
@@ -11,11 +12,13 @@ def groups_allowed(groups=[]):
                 return HttpResponse('You must be signed in!')
 
             if not user.groups.exists():
-                return HttpResponse(f'You must be in one of the groups {", ".join(groups)}!')
+                return render(request, 'error.html')
+                # return HttpResponse(f'You must be in one of the groups {", ".join(groups)}!')
 
             user_groups = [g.name for g in user.groups.all()]
             result = set(user_groups).intersection(groups)
             if groups and not result:
+                # return redirect('error.html')
                 return HttpResponse(f'You must be in one of the groups {", ".join(groups)}!')
             else:
                 return view_func(request, *args, **kwargs)
