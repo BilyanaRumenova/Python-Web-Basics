@@ -14,22 +14,22 @@ class SignUpForm(UserCreationForm):
 
 class SignInForm(forms.Form):
     user = None
-    username = forms.CharField(
-        max_length=15,
+    email = forms.EmailField(
+        max_length=50,
     )
     password = forms.CharField(
-        max_length=15,
+        max_length=35,
         widget=forms.PasswordInput(),
     )
 
     def clean_password(self):
         self.user = authenticate(
-            username=self.cleaned_data['username'],
+            email=self.cleaned_data['email'],
             password=self.cleaned_data['password'],
         )
 
         if not self.user:
-            raise ValidationError('Username and/or password incorrect!')
+            raise ValidationError('Email and/or password incorrect!')
 
     def save(self):
         return self.user
