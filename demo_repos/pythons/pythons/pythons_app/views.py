@@ -11,7 +11,8 @@ def index(req):
 
 
 # @login_required(login_url=reverse_lazy('sign in'))
-@groups_allowed(groups=['User'])
+# @groups_allowed(groups=['User'])
+@groups_allowed(groups=['admin'])
 def create(request):
     if request.method == 'GET':
         form = PythonCreateForm()

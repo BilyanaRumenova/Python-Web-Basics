@@ -15,7 +15,7 @@
         </ul>
     </div>
     {% if request.user.is_authenticated %}
-        <p>Hello, {{ request.user }}</p>
+        <p>Hello, <a href="{% url 'profile details' %}"> {{ request.user }}</a></p>
         <a href="{% url 'sign out' %}">Sign out</a>
     {% else %}
         <a href="{% url 'sign in' %}">Sign in</a>

@@ -1,3 +1,5 @@
+{% load profile_complete_notification %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,8 @@
 <body>
 
 {% include 'common/header.html' %}
+
+{% profile_complete_notification %}
 
 {% block content %}
 {% endblock %}
