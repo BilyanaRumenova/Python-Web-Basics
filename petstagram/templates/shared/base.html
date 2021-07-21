@@ -26,12 +26,21 @@
             <li><a class="nav-link" href="#">Home</a></li>
             <li><a class="nav-link" href="{% url 'list pets' %}">All pets</a></li>
             <li><a class="nav-link" href="{% url 'create pet' %}">Add pet photo</a></li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sign Up</a>
-            </li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile details' %}">{{ request.user }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log out user' %}">Log Out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log in user' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register user' %}">Register</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

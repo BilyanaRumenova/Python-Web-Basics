@@ -1,4 +1,5 @@
-from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+# from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -6,6 +7,7 @@ from django.db import models
 #     if value <= 0:
 #         raise ValidationError
 
+UserModel = get_user_model()
 
 class Pet(models.Model):
     TYPE_CHOICE_DOG = 'dog'
@@ -33,8 +35,20 @@ class Pet(models.Model):
     image = models.ImageField(
         upload_to='pets',
     )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
     # image_url = models.URLField()
 
 
 class Like(models.Model):
-    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    pet = models.ForeignKey(
+        Pet,
+        on_delete=models.CASCADE,
+    )
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )

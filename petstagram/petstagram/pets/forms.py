@@ -11,7 +11,10 @@ from petstagram.pets.models import Pet
 class PetForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = Pet
-        fields = '__all__'
+        exclude = ('user',)
+        widgets = {
+            'name': forms.TextInput()
+        }
 
 
 class EditPetForm(PetForm):

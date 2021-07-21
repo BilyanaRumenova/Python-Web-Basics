@@ -8,20 +8,23 @@
             <h1 class="display-4">Welcome to Petstagram</h1>
             <p class="lead">Share your pets photos.</p>
             <hr class="my-4">
-            <div class="inner cover">
-                <h1 class="cover-heading"></h1>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p class="lead">Already have an account? <br><a href="#" class="btn btn-lg btn-secondary">sign
-                            in</a></p>
-                    </div>
-                    <div class="col-lg-6">
-                        <p class="lead"> Do not have an account? <br>
-                            <a href="#" class="btn btn-lg btn-secondary">sign up</a>
-                        </p>
+            {% if not request.user.is_authenticated %}
+                <div class="inner cover">
+                    <h1 class="cover-heading"></h1>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p class="lead">Already have an account? <br><a href="{% url 'log in user' %}"
+                                                                            class="btn btn-lg btn-secondary">Log In</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="lead"> Do not have an account? <br>
+                                <a href="{% url 'register user' %}" class="btn btn-lg btn-secondary">Register</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
