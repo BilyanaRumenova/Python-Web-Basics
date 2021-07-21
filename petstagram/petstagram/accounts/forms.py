@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 from petstagram.accounts.models import Profile
+from petstagram.core.forms import BootstrapFormMixin
 
 UserModel = get_user_model()
 
@@ -36,7 +37,7 @@ class RegisterForm(UserCreationForm):
         fields = ('email', )
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('profile_image',)
